@@ -1,27 +1,39 @@
-import { Routes, Route, NavLink } from 'react-router-dom';
-import './App.css';
-import Home from './Comps/Home';
-import Main from './Comps/Main';
-function App() {
-  return (
-    <div className="App">
-      <ul>
+import React from 'react'
+import Login from './Comps/Login'
+import Signin from './Comps/Signin'
+import Home from './Comps/Home'
+import { Routes, Route, NavLink } from 'react-router-dom'
+import Loggedin from './Comps/Loggedin'
+const App = () => {
+  return (<div >
 
-        <li><NavLink to='/'>Home</NavLink></li>
-        <li><NavLink to='/about'>about</NavLink></li>
-        <li><NavLink to='/contact'>contact</NavLink></li>
+    <div>
+      <div className='w-52 '>
+        <NavLink><img src="https://akm-img-a-in.tosshub.com/businesstoday/images/story/202101/myntra_logo_660_300121011207.jpg?size=948:533" alt="" /></NavLink>
 
+      </div>
+      <ul className=' flex flex-row gap-20 ml-60'>
+        <li className='text-center'><NavLink to='/'>Home</NavLink></li>
+        <li className='text-center'><NavLink to='/'>About</NavLink></li>
+        <li className='text-center'><NavLink to='/'>Contact</NavLink></li>
+        <li className='bg-green-400 text-white text-lg py-2 px-4'><NavLink to='/login'>
+          <button>Login</button>
+        </NavLink></li>
+        <li className='bg-green-400 py-2 px-4 text-lg text-white'><NavLink to='/signin'>
+          <button>SignUP</button>
+        </NavLink></li>
       </ul>
-      <Routes>
-        <Route path='/' element={<Main />} >
-          <Route index element={<Home />} />
-          <Route path='/about' element={<div>About Us</div>} />
-          <Route path='/contact' element={<div>Contact us</div>} />
-          <Route path='*' element={<div><img src='https://sitechecker.pro/wp-content/uploads/2023/06/404-status-code.png' width={1100} alt="" /></div>} />
-        </Route>
-      </Routes>
     </div>
-  );
+    <Routes>
+      <Route path='/login' element={<Login />} />
+      <Route path='/' element={<Home />} />
+      <Route path='/signin' element={<Signin />} />
+      <Route path='/signnedin' element={<Loggedin />} />
+
+      <Route path='/loggedin' element={<Loggedin />} />
+    </Routes>
+  </div>
+  )
 }
 
-export default App;
+export default App
